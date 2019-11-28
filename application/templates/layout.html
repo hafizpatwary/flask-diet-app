@@ -17,13 +17,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a><!-- need to add a route to Home page -->
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a><!-- need to add a route to Home page -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Food</a><!-- need to add a toute to My diets page -->
+                        <a class="nav-link" href="{{ url_for('food') }}">Food</a><!-- need to add a toute to My diets page -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create Diet</a><!-- need to add a toute to My diets page -->
+                        <a class="nav-link" href="{{ url_for('create_diet') }}">Create Diet</a><!-- need to add a toute to My diets page -->
                     </li>
                 </ul>
             </div>
