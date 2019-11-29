@@ -24,6 +24,7 @@ class Diet(db.Model):
     diet_name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(512))
     userID = db.Column(db.Integer, db.ForeignKey('user.userID'))
+    #foods is a way to link Diet to Food thorugh diet_plan
     foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets'))
 
     def __repr__(self):

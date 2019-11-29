@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Diet</a><!-- need to add a link to diet page -->
+            <a class="navbar-brand" href="{{ url_for('create_diet') }}">Diet</a><!-- need to add a link to diet page -->
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
@@ -21,6 +21,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('food') }}">Food</a><!-- need to add a toute to My diets page -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('diets') }}">Diets</a><!-- need to add a toute to My diets page -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('create_diet') }}">Create Diet</a><!-- need to add a toute to My diets page -->

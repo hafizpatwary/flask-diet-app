@@ -9,16 +9,14 @@
 </div>
 
 <div class="row m-5">
-{% for index in range(0,len) %} <!-- the range is set up so that the cards appear 3 columns per row -->
+{% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
     <div class="col-sm-4 mb-4">
         <div class="card">
             <div class="card-body text-left">
-                <h5 class="card-title">{{ diets[index][0] }}</h5>
-                <p class="card-text text-left">{{ diets[index][1] }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
+                <h5 class="card-title">{{ diet.diet_name }}</h5>
+                <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
                 <div class="float-right">
                     <button type="button" class="btn btn-outline-info btn-sm btn-ml">View Diet</button>
-                    <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
                 </div>
                 <!-- need make a pop up for card and add button to delete card -->
             </div>
