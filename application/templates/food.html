@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add food</legend>
+            <div class="form-group">
+                {{ form.food_name.label }}
+                {% if form.food_name.errors %}
+                    {{ form.food_name(class="form-control",placeholder="Food Name") }}
+                    <div class="error">
+                        {% for error in form.food_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.food_name(class="form-control",placeholder="Food Name") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.calories.label }}
+                {% if form.calories.errors %}
+                    {{ form.calories(class="form-control",placeholder="Calories") }}
+                    <div class="error">
+                        {% for error in form.calories.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.calories(class="form-control",placeholder="Calories") }}
+                {% endif %}
+            </div>
+            </fieldset>
+            {{ form.submit(class="btn btn-info btn-sm") }}
+    </form>
+</div>
+
+{% endblock %}

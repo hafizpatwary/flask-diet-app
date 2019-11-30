@@ -1,16 +1,40 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="form">
+<div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        {{ form.diet_name.label }}
-        {{ form.diet_name }}
-    <br>
-        {{ form.description.label }}
-        {{ form.description }}
-    <br>
-        {{ form.submit }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Diet</legend>
+            <div class="form-group">
+                {{ form.diet_name.label }}
+                {% if form.diet_name.errors %}
+                    {{ form.diet_name(class="form-control",placeholder="Diet Name") }}
+                    <div class="error">
+                        {% for error in form.diet_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.diet_name(class="form-control",placeholder="Diet Name") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.description.label }}
+                {% if form.description.errors %}
+                    {{ form.description(class="form-control",placeholder="Description") }}
+                    <div class="error">
+                        {% for error in form.description.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.description(class="form-control",placeholder="Description") }}
+                {% endif %}
+            </div>
+            </fieldset>
+            {{ form.submit(class="btn btn-info btn-sm") }}
     </form>
 </div>
+
 
 {% endblock %}
