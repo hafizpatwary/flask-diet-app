@@ -14,7 +14,7 @@ class User(db.Model):
 
 
 diet_plan = db.Table('diet_plan',
-        db.Column('userID', db.Integer, db.ForeignKey('diet.dietID')),
+        db.Column('dietID', db.Integer, db.ForeignKey('diet.dietID')),
         db.Column('foodID', db.Integer, db.ForeignKey('food.foodID'))
         )
 

@@ -1,4 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="form">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.diet_name.label }}
+        {{ form.diet_name }}
+    <br>
+        {{ form.description.label }}
+        {{ form.description }}
+    <br>
+        {{ form.submit }}
+    </form>
+</div>
 
 {% endblock %}

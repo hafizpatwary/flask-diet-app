@@ -19,6 +19,7 @@ def create_diet():
             diet_name=form.diet_name.data,
             description=form.description.data,
             user=User.query.first()
+            #foods =
             )
 
         db.session.add(dietData)
