@@ -1,20 +1,52 @@
 {% extends 'layout.html' %}
 {% block content %}
+
 <form method="POST">
-    <label for="foods">Ideal city to visit?</label>
-    <input name="any">
-    <input type="text" list="foodlist" id="foods" name="foods">
-        <datalist id="foodlist">
-        {% for food in foods %}
-            <option value="{{ food }}"></option>
+<!---------------------------------------Select Diet--------------------------------------------------->
+    <select id="diet" name="diet" class="custom-select custom-select-lg mt-3">
+        <option selected>Choose your diet you want to add food to</option>
+        {% for diet in diets %}
+            <option value="{{ diet.dietID }}">{{ diet.diet_name }}</option>
         {% endfor %}
-        </datalist>
-    <input type="submit">
+    </select>
+
+<!---------------------------------------Select Food--------------------------------------------------->
+    <select id="foods" name="foods" class="custom-select custom-select-sm mt-3">
+        <option selected>Choose your diet you want to add food to</option>
+        {% for food in foods %}
+            <option value="{{ food.foodID }}">{{ food.food_name }}</option>
+        {% endfor %}
+        </select>
+<!---------------------------------------Submit Button--------------------------------------------------->
+        <input type="submit" class="btn btn-info btn-lg mt-2">
 </form>
 
-<p> {{ text }} </p>
-
-<p>{{ food }}
-
+<!---------------------------------------Showing Diets--------------------------------------------------->
+<div class="row m-2">
+{% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
+    <div class="col-sm-4 py-1">
+        <div class="card h-100">
+            <div class="card-body text-left">
+                <h5 class="card-title">{{ diet.diet_name }}</h5>
+                Food:
+                {% for food in diet.foods %}
+                    {% if food == diet.foods[-1] %}
+                        {{ food.food_name }} <!--({{ food.calories }})-->.
+                    {% else %}
+                        {{ food.food_name }} <!--({{ food.calories }} kcal)-->,
+                    {% endif %}
+                {% endfor %}
+                <hr>
+                <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
+                <div class="float-right">
+                    <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+                </div>
+                <!-- need make a pop up for card and add button to delete card -->
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
 
 {% endblock %}

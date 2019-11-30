@@ -16,18 +16,15 @@ def home():
 @app.route('/creatediet', methods=['GET','POST'])
 def create_diet():
     form = DietForm()
-
     if form.validate_on_submit():
         dietData = Diet(
             diet_name=form.diet_name.data,
             description=form.description.data,
             user=User.query.first()
-            #foods =
             )
 
         db.session.add(dietData)
         db.session.commit()
-        flash('Your diet has been added!', 'success') ##################
         return redirect(url_for('home'))
     else:
         print(form.errors)
@@ -38,14 +35,17 @@ def create_diet():
 
 @app.route('/diets', methods=['GET','POST'])
 def diets():
+    diets = Diet.query.all()
     foods = Food.query.all()
     if request.method == "POST":
-        food = request.form['foods']
-        text = request.form['any']
-        return render_template('diets.html', text = text, foods=foods, food=food)
-    return render_template('diets.html', text='not changed', foods=foods, food='no food')
+        adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()
+        food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
+        adding_to_diet.foods.append(food_to_add)
+        db.session.commit()
+        return render_template('diets.html', foods=foods,diets=diets)
+    return render_template('diets.html', foods=foods, food='no food',diets=diets)
 
-#---------------------------------------------------------------------------------------------------------
+#--------------------------------------------Food--------------------------------------------------------
 
 @app.route('/food', methods=['GET','POST'])
 def food():

@@ -28,7 +28,7 @@ class Diet(db.Model):
     foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets'))
 
     def __repr__(self):
-        return f"DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.Foods"
+        return f"DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.foods"
 
 
 class Food(db.Model):

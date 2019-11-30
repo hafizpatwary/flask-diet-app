@@ -8,10 +8,10 @@
     <a class="btn btn-primary btn-lg" href="{{ url_for('create_diet') }}" role="button">Create diet</a>
 </div>
 
-<div class="row m-5">
+<div class="row m-2">
 {% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
-    <div class="col-sm-4 mb-4">
-        <div class="card">
+    <div class="col-sm-4 py-1">
+        <div class="card h-100">
             <div class="card-body text-left">
                 <h5 class="card-title">{{ diet.diet_name }}</h5>
                 Food:
