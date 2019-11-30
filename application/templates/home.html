@@ -14,9 +14,20 @@
         <div class="card">
             <div class="card-body text-left">
                 <h5 class="card-title">{{ diet.diet_name }}</h5>
+                {% for food in diet.foods %}
+                    {% if food == diet.foods[-1] %}
+                        {{ food.food_name }} ({{ food.calories }}).
+                    {% else %}
+                        Food: {{ food.food_name }} ({{ food.calories }}),
+                    {% endif %}
+                {% endfor %}
+                <hr>
                 <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
                 <div class="float-right">
                     <button type="button" class="btn btn-outline-info btn-sm btn-ml">View Diet</button>
+                    <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+
                 </div>
                 <!-- need make a pop up for card and add button to delete card -->
             </div>

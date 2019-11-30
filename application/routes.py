@@ -38,6 +38,7 @@ def diets():
 
 @app.route('/food', methods=['GET','POST'])
 def food():
+    foods = Food.query.all()
     form = FoodForm()
 
     if form.validate_on_submit():
@@ -48,8 +49,8 @@ def food():
 
         db.session.add(foodData)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('food'))
     else:
         print(form.errors)
 
-    return render_template('food.html',title='Food', form=form)
+    return render_template('food.html',title='Food', form=form, foods=foods)
