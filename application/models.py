@@ -10,7 +10,7 @@ class User(db.Model):
     diets = db.relationship('Diet', backref='user') #backref is useful when
 
     def __repr__(self):
-        return [f"UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}"]
+        return f"UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}"
 
 
 diet_plan = db.Table('diet_plan',
@@ -28,7 +28,7 @@ class Diet(db.Model):
     foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets'))
 
     def __repr__(self):
-        return [f"DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description}"]
+        return f"DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.Foods"
 
 
 class Food(db.Model):
@@ -37,5 +37,8 @@ class Food(db.Model):
     calories = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return [f"FoodID: {self.foodID} \r\nFood: {self.food_name} \r\nCalories:  {self.calories}"]
+        """ This function is used to REPRESENTED the object, this is particularly useful
+        when it has to be deplayed on the webpage. Exaple: in the food list in diet page
+        food name and calorie is required hence the format below had been chosen"""
+        return f"{self.food_name} ({self.calories} kcal)"
 
