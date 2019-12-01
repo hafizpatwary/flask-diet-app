@@ -31,6 +31,15 @@ def create_diet():
 
     return render_template('create_diet.html',title='Create Diet', form=form)
 
+
+@app.route('/diets/delete/<string:dietID>', methods=['GET','POST'])
+def delete_diet(dietID):
+    diet_to_delete = Diet.query.filter_by(dietID=dietID).first()
+    db.session.delete(diet_to_delete)
+    db.session.commit()
+
+    return redirect(url_for('diets'))
+
 #-------------------------------------------DietFood------------------------------------------------------
 
 @app.route('/diets', methods=['GET','POST'])
