@@ -65,3 +65,13 @@ def food():
         print(form.errors)
 
     return render_template('food.html',title='Food', form=form, foods=foods)
+
+@app.route('/food/delete/<string:foodID>', methods=['GET','POST'])
+def delete_food(foodID):
+
+    food_to_delete = Food.query.filter_by(foodID=foodID).first()
+    db.session.delete(food_to_delete)
+    db.session.commit()
+
+    return redirect(url_for('food'))
+

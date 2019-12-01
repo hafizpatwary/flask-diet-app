@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
+
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Create Diet</legend>
+<!--------------------------------- Diet Name ---------------------------------------------------->
             <div class="form-group">
-                {{ form.food }}
                 {{ form.diet_name.label }}
                 {% if form.diet_name.errors %}
                     {{ form.diet_name(class="form-control",placeholder="Diet Name") }}
@@ -19,6 +20,7 @@
                     {{ form.diet_name(class="form-control",placeholder="Diet Name") }}
                 {% endif %}
             </div>
+<!--------------------------------- Description ---------------------------------------------------->
             <div class="form-group">
                 {{ form.description.label }}
                 {% if form.description.errors %}
@@ -33,6 +35,7 @@
                 {% endif %}
             </div>
             </fieldset>
+<!--------------------------------- Submit --------------------------------------------------------->
             {{ form.submit(class="btn btn-info btn-sm") }}
     </form>
 </div>
