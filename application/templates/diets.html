@@ -1,26 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
+<div class="col-lg-6 col-md-6 col-sm-12 ">
+    <form method="POST">
+    <!---------------------------------------Select Diet--------------------------------------------------->
+            <select id="diet" name="diet" class="form-control custom-select custom-select-lg mt-3" required>
+                {% for diet in diets %}
+                    <option value="{{ diet.dietID }}">{{ diet.diet_name }}</option>
+                {% endfor %}
+            </select>
 
-<form method="POST">
-<!---------------------------------------Select Diet--------------------------------------------------->
-    <select id="diet" name="diet" class="custom-select custom-select-lg mt-3">
-        <option selected>Choose your diet you want to add food to</option>
-        {% for diet in diets %}
-            <option value="{{ diet.dietID }}">{{ diet.diet_name }}</option>
-        {% endfor %}
-    </select>
-
-<!---------------------------------------Select Food--------------------------------------------------->
-    <select id="foods" name="foods" class="custom-select custom-select-sm mt-3">
-        <option selected>Choose your diet you want to add food to</option>
-        {% for food in foods %}
-            <option value="{{ food.foodID }}">{{ food.food_name }}</option>
-        {% endfor %}
-        </select>
-<!---------------------------------------Submit Button--------------------------------------------------->
-        <input type="submit" class="btn btn-info btn-lg mt-2">
-</form>
-
+    <!---------------------------------------Select Food--------------------------------------------------->
+        <select id="foods" name="foods" class="custom-select custom-select-sm mt-3" required>
+            {% for food in foods %}
+                <option value="{{ food.foodID }}">{{ food.food_name }}</option>
+            {% endfor %}
+            </select>
+    <!---------------------------------------Submit Button--------------------------------------------------->
+            <input type="submit" class="btn btn-info btn-lg mt-2" value="Add">
+    </form>
+</div>
 <!---------------------------------------Showing Diets--------------------------------------------------->
 <div class="row m-2">
 {% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
