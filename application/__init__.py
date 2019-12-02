@@ -1,4 +1,4 @@
-ORDfrom flask import Flask
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os, pymysql
 from flask_bcrypt import Bcrypt
