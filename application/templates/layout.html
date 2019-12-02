@@ -22,6 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('food') }}">Food</a><!-- need to add a toute to My diets page -->
                     </li>
+                    {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('diets') }}">Diets</a><!-- need to add a toute to My diets page -->
                     </li>
@@ -29,8 +30,16 @@
                         <a class="nav-link" href="{{ url_for('create_diet') }}">Create Diet</a><!-- need to add a toute to My diets page -->
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a><!-- need to add a toute to My diets page -->
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('register') }}">Register</a><!-- need to add a toute to My diets page -->
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a><!-- need to add a toute to My diets page -->
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
