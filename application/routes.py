@@ -23,8 +23,8 @@ def register():
             email=form.email.data,
             password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             )
-        db.seesion.add(userData)
-        db.seesion.commit()
+        db.session.add(userData)
+        db.session.commit()
         return redirect(url_for('home'))
     else:
         print(form.errors)
