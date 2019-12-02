@@ -21,7 +21,7 @@ def register():
             name=form.name.data,
             surname=form.surname.data,
             email=form.email.data,
-            password=bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+            password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             )
         db.seesion.add(userData)
         db.seesion.commit()
