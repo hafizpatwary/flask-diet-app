@@ -26,7 +26,7 @@ def register():
             )
         db.session.add(userData)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
     else:
         print(form.errors)
 
@@ -54,10 +54,12 @@ def login():
 
     return render_template('login.html',title='Login', form=form)
 
+###################################
 login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
+####################################
 
 @app.route("/logout")
 def logout():
