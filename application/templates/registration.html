@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Registration</legend>
+<!--------------------------------- User Name ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.name.label }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control",placeholder="Name") }}
+                    <div class="error">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control",placeholder="Diet Name") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Surname ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.surname.label }}
+                {% if form.surname.errors %}
+                    {{ form.surname(class="form-control",placeholder="Surname") }}
+                    <div class="error">
+                        {% for error in form.surname.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.surname(class="form-control",placeholder="Description") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Email ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.email.label }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control",placeholder="Email") }}
+                    <div class="error">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control",placeholder="Email") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Password ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.password.label }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control",placeholder="Password") }}
+                    <div class="error">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control",placeholder="Password") }}
+                {% endif %}
+            </div>
+
+<!--------------------------------- Confirm Password ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.confirm_password.label }}
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control",placeholder="Confirm Password") }}
+                    <div class="error">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control",placeholder="Confrim Password") }}
+                {% endif %}
+            </div>
+
+
+
+<!--------------------------------- Submit --------------------------------------------------------->
+            {{ form.submit(class="btn btn-info btn-sm") }}
+    </form>
+</div>
+
+
+{% endblock %}

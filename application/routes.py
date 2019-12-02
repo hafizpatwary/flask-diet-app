@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
-from application import app, db
+from application import app, db, bcrypt
 from application.models import User, Diet, Food, diet_plan
-from application.forms import DietForm, FoodForm
+from application.forms import DietForm, FoodForm, RegistrationForm
 
 #-----------------------------------------Home-----------------------------------------------------------
 
@@ -10,6 +10,27 @@ from application.forms import DietForm, FoodForm
 def home():
     diets = Diet.query.all()
     return render_template("home.html",title='Home',diets=diets)
+
+
+
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        userData = User(
+            name=form.name.data,
+            surname=form.surname.data,
+            email=form.email.data,
+            password=bcrypt.generate_password_hash(form.password.data.decode('utf-8'))
+            )
+        db.seesion.add(userData)
+        db.seesion.commit()
+        return redirect(url_for('home'))
+    else:
+        print(form.errors)
+
+    return render_template('registration.html',title='Registration', form=form)
+
 
 #-----------------------------------------Create Diet----------------------------------------------------
 
