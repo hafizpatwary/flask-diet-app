@@ -54,12 +54,13 @@ def login():
 
     return render_template('login.html',title='Login', form=form)
 
+login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
 @app.route("/logout")
-def logout:
+def logout():
     logout_user()
     return redirect(url_for('home'))
 #-----------------------------------------Create Diet----------------------------------------------------

@@ -9,6 +9,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(512), nullable=False)
     #the attribute below 'diets' is linked to the Diets table. i.e if User.diets is called all the diets that user created are shown
     diets = db.relationship('Diet', backref='user') #backref is useful when
+    
+    id = userID #for overiding
 
     def __repr__(self):
         return f"UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}"
