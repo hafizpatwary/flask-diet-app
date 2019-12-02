@@ -10,8 +10,8 @@
             <div class="form-group">
                 {{ form.email.label }}
                 {% if form.email.errors %}
-                    {{ form.email(class="form-control",placeholder="Email") }}
-                    <div class="error">
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.email.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
@@ -24,8 +24,8 @@
             <div class="form-group">
                 {{ form.password.label }}
                 {% if form.password.errors %}
-                    {{ form.password(class="form-control",placeholder="Password") }}
-                    <div class="error">
+                    {{ form.password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
@@ -35,8 +35,8 @@
                 {% endif %}
             </div>
             <div class="form-group">
-            	{{ form.remember.label }}
                 {{ form.remember }}
+            	<span class="text-muted ml-2">{{ form.remember.label }}</span>
             </div>
         </fieldset>
 <!--------------------------------- Submit --------------------------------------------------------->

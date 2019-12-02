@@ -26,6 +26,7 @@ def register():
             )
         db.session.add(userData)
         db.session.commit()
+        flash("Account created successfully", 'success')
         return redirect(url_for('login'))
     else:
         print(form.errors)
@@ -49,37 +50,35 @@ def login():
                 return redirect(next_page)
             else:
                 return redirect(url_for('home'))
-    else:
-        print(form.errors)
+
+        flash("Login unsuccessfull. Please check email and password", 'danger')
 
     return render_template('login.html',title='Login', form=form)
 
-###################################
-login_manager.init_app(app)
-@login_manager.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-####################################
 
 @app.route("/logout")
 def logout():
     logout_user()
+    flash("You have been logged out!", 'success')
     return redirect(url_for('home'))
 #-----------------------------------------Create Diet----------------------------------------------------
 
 @app.route('/creatediet', methods=['GET','POST'])
+@login_required
 def create_diet():
     form = DietForm()
     if form.validate_on_submit():
         dietData = Diet(
             diet_name=form.diet_name.data,
             description=form.description.data,
-            user=User.query.first()
+            user=current_user
             )
 
         db.session.add(dietData)
         db.session.commit()
-        return redirect(url_for('home'))
+        flash(f"Diet {form.diet_name.data} created successfully", 'success')
+
+        return redirect(url_for('diets'))
     else:
         print(form.errors)
 
@@ -87,6 +86,7 @@ def create_diet():
 
 
 @app.route('/diets/delete/<string:dietID>', methods=['GET','POST'])
+@login_required
 def delete_diet(dietID):
     diet_to_delete = Diet.query.filter_by(dietID=dietID).first()
     db.session.delete(diet_to_delete)
@@ -94,11 +94,12 @@ def delete_diet(dietID):
 
     return redirect(url_for('diets'))
 
-#-------------------------------------------DietFood------------------------------------------------------
+#------------------------------------------MyDiet---------------------------------------------------------
 
 @app.route('/diets', methods=['GET','POST'])
+@login_required
 def diets():
-    diets = Diet.query.all()
+    diets = Diet.query.filter_by(user=current_user).all()
     foods = Food.query.all()
     if request.method == "POST":
         adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()

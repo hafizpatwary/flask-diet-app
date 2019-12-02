@@ -10,8 +10,8 @@
             <div class="form-group">
                 {{ form.diet_name.label }}
                 {% if form.diet_name.errors %}
-                    {{ form.diet_name(class="form-control",placeholder="Diet Name") }}
-                    <div class="error">
+                    {{ form.diet_name(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.diet_name.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
@@ -24,8 +24,8 @@
             <div class="form-group">
                 {{ form.description.label }}
                 {% if form.description.errors %}
-                    {{ form.description(class="form-control",placeholder="Description") }}
-                    <div class="error">
+                    {{ form.description(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.description.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}

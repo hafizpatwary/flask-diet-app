@@ -28,8 +28,8 @@
 <!--------------------------------- Food Name ---------------------------------------------------->
             <div class="form-group">
                 {% if form.food_name.errors %}
-                    {{ form.food_name(class="form-control",placeholder="Food Name") }}
-                    <div class="error">
+                    {{ form.food_name(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.food_name.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
@@ -41,8 +41,8 @@
 <!--------------------------------- Food Calories ----------------------------------------------->
             <div class="form-group">
                 {% if form.calories.errors %}
-                    {{ form.calories(class="form-control",placeholder="Calories ckal") }}
-                    <div class="error">
+                    {{ form.calories(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
                         {% for error in form.calories.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
