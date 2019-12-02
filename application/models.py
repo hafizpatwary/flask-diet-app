@@ -1,6 +1,7 @@
 from application import db
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     userID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     surname = db.Column(db.String(64), nullable=False)
@@ -41,4 +42,8 @@ class Food(db.Model):
         when it has to be deplayed on the webpage. Exaple: in the food list in diet page
         food name and calorie is required hence the format below had been chosen"""
         return f"{self.food_name} ({self.calories} kcal)"
+
+
+
+
 

@@ -1,7 +1,8 @@
 from flask import render_template, redirect, url_for, flash, request
-from application import app, db, bcrypt
+from application import app, db, bcrypt, login_manager
 from application.models import User, Diet, Food, diet_plan
-from application.forms import DietForm, FoodForm, RegistrationForm
+from application.forms import DietForm, FoodForm, RegistrationForm, LoginForm
+from flask_login import login_user, current_user, logout_user, login_required
 
 #-----------------------------------------Home-----------------------------------------------------------
 
@@ -32,6 +33,35 @@ def register():
     return render_template('registration.html',title='Registration', form=form)
 
 
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+
+            if next_page:
+                return redirect(next_page)
+            else:
+                return redirect(url_for('home'))
+    else:
+        print(form.errors)
+
+    return render_template('login.html',title='Login', form=form)
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+@app.route("/logout")
+def logout:
+    logout_user()
+    return redirect(url_for('home'))
 #-----------------------------------------Create Diet----------------------------------------------------
 
 @app.route('/creatediet', methods=['GET','POST'])
