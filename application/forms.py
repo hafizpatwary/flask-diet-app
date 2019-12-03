@@ -11,6 +11,13 @@ class DietForm(FlaskForm):
 
 
 
+class UpdateDietForm(FlaskForm):
+    diet_name = StringField('Diet name', validators=[DataRequired(),Length(min=1, max=128)])
+    description = StringField('Description', validators=[DataRequired(), Length(min=1, max=512)])
+    submit = SubmitField('Update Diet')
+
+
+
 class FoodForm(FlaskForm):
     food_name = StringField('Food', validators=[DataRequired(), Length(min=1, max=128)])
     calories = IntegerField('Calories kcal', validators=[NumberRange(min=0, max=100000)])

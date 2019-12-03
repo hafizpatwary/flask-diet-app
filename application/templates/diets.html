@@ -29,18 +29,22 @@
                 Food:
                 {% for food in diet.foods %}
                     {% if food == diet.foods[-1] %}
-                        {{ food.food_name }} <!--({{ food.calories }})-->.
+                        {{ food.food_name }}.
                     {% else %}
-                        {{ food.food_name }} <!--({{ food.calories }} kcal)-->,
+                        {{ food.food_name }},
                     {% endif %}
                 {% endfor %}
                 <hr>
                 <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
+
                 <div class="float-right">
-                    <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                    <!-- Edit diet -->
+                    <a href="/diets/update/{{ diet.dietID }}" class="btn btn-outline-warning btn-sm">Edit</a>
+                    <!-- Delete diet -->
                     <a href="/diets/delete/{{ diet.dietID }}" class="btn btn-outline-danger btn-sm"
                     onclick="return confirm('Are you sure you want to delete {{ diet.diet_name }}?')">Delete</a>
                 </div>
+
                 <!-- need make a pop up for card and add button to delete card -->
             </div>
         </div>

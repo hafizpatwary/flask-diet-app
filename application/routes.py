@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
 from application import app, db, bcrypt, login_manager
 from application.models import User, Diet, Food, diet_plan
-from application.forms import DietForm, FoodForm, RegistrationForm, LoginForm, UpdateAccountForm
+from application.forms import DietForm, FoodForm, RegistrationForm, LoginForm, UpdateAccountForm, UpdateDietForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 #-----------------------------------------Home-----------------------------------------------------------
@@ -72,11 +72,9 @@ def create_diet():
             description=form.description.data,
             user=current_user
             )
-
         db.session.add(dietData)
         db.session.commit()
         flash(f"Diet {form.diet_name.data} created successfully", 'success')
-
         return redirect(url_for('diets'))
     else:
         print(form.errors)
@@ -90,14 +88,15 @@ def create_diet():
 def diets():
     diets = Diet.query.filter_by(user=current_user).all()
     foods = Food.query.all()
-    if request.method == "POST":
-        adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()
-        food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
-        adding_to_diet.foods.append(food_to_add)
-        db.session.commit()
-        return render_template('diets.html', foods=foods,diets=diets)
+    # if request.method == "POST":
+    #     adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()
+    #     food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
+    #     adding_to_diet.foods.append(food_to_add)
+    #     db.session.commit()
+    #     return render_template('diets.html', foods=foods,diets=diets)
     return render_template('diets.html', foods=foods, food='no food',diets=diets)
 
+#--------------Delete Diet
 @app.route('/diets/delete/<int:dietID>', methods=['GET','POST'])
 @login_required
 def delete_diet(dietID):
@@ -106,6 +105,24 @@ def delete_diet(dietID):
     db.session.commit()
 
     return redirect(url_for('diets'))
+#--------------Update Diet
+@app.route('/diets/update/<int:dietID>', methods=['GET','POST'])
+@login_required
+def update_diet(dietID):
+    form = UpdateDietForm()
+    diet = Diet.query.filter_by(dietID=dietID).first()
+    if form.validate_on_submit():
+        diet.diet_name = form.diet_name.data
+        diet.description = form.description.data
+        db.session.commit()
+        flash("Updated successfully", 'success')
+        return redirect(url_for('diets'))
+    elif request.method == 'GET':
+        form.diet_name.data = diet.diet_name
+        form.description.data = diet.description
+
+    return render_template('diet.html',title='Edit Diet', form=form)
+
 
 #--------------------------------------------Food--------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------
@@ -155,5 +172,5 @@ def account():
         form.name.data = current_user.name
         form.surname.data = current_user.surname
         form.email.data = current_user.email
-    return render_template('account.html',title='Account', form=form)
 
+    return render_template('account.html',title='Account', form=form)
