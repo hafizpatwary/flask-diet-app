@@ -35,19 +35,4 @@
 {% endfor %}
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-12 ">
-    <form method="POST">
-    <!---------------------------------------Select Food--------------------------------------------------->
-        <select id="foods" name="foods" class="custom-select custom-select-sm mt-3" required>
-            {% for food in foods %}
-                <option value="{{ food.foodID }}">{{ food.food_name }}</option>
-            {% endfor %}
-            </select>
-    <!---------------------------------------Submit Button--------------------------------------------------->
-            <input type="submit" id="submit" name="submit" class="btn btn-info btn-lg mt-2" value="Add Food">
-    </form>
-</div>
-
-
-
 {% endblock %}

@@ -34,6 +34,7 @@ def register():
 
     return render_template('registration.html',title='Registration', form=form)
 
+
 #--------------------------------------Login&Logout-----------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------
 @app.route('/login', methods=['GET','POST'])
@@ -53,7 +54,7 @@ def login():
 
     return render_template('login.html',title='Login', form=form)
 
-
+####### logout #######
 @app.route("/logout")
 def logout():
     logout_user()
@@ -87,12 +88,6 @@ def create_diet():
 @login_required
 def diets():
     diets = Diet.query.filter_by(user=current_user).all()
-    # if request.method == "POST":
-    #     adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()
-    #     food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
-    #     adding_to_diet.foods.append(food_to_add)
-    #     db.session.commit()
-    #     return render_template('diets.html', foods=foods,diets=diets)
     return render_template('diets.html', diets=diets)
 
 ####### Delete Diet #######
@@ -125,7 +120,7 @@ def update_diet(dietID):
 
     return render_template('diet.html',title='Edit Diet', form=form)
 
-####### Add Food #######
+####### Add Food to diet #######
 @app.route('/diets/add/<int:dietID>', methods=['GET','POST'])
 @login_required
 def add_food(dietID):
@@ -137,6 +132,12 @@ def add_food(dietID):
         db.session.commit()
         flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
     return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods)
+
+####### Remove Food from diet #######
+@app.route('/diets/remove/<int:dietID>', methods=['GET','POST'])
+@login_required
+def remove_food(dietID):
+    pass
 
 
 #--------------------------------------------Food--------------------------------------------------------
@@ -170,7 +171,8 @@ def delete_food(foodID):
 
     return redirect(url_for('food'))
 
-
+#-----------------------------------------User Account---------------------------------------------------
+#--------------------------------------------------------------------------------------------------------
 
 @app.route('/account', methods=['GET','POST'])
 @login_required
