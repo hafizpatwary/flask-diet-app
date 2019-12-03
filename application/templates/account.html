@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Account</legend>
+<!--------------------------------- User Name ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.name.label }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control is-invalid") }}
+                    <div class="error">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Surname ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.surname.label }}
+                {% if form.surname.errors %}
+                    {{ form.surname(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.surname.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.surname(class="form-control") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Email ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.email.label }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control") }}
+                {% endif %}
+            </div>
+            <!--------------------------------- Submit --------------------------------------------------------->
+            {{ form.submit(class="btn btn-info btn-sm") }}
+    </form>
+</div>
+{% endblock %}

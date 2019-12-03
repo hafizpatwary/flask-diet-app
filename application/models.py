@@ -50,7 +50,7 @@ class Food(db.Model):
         """ This function is used to REPRESENTED the object, this is particularly useful
         when it has to be deplayed on the webpage. Exaple: in the food list in diet page
         food name and calorie is required hence the format below had been chosen"""
-        return f"{self.food_name} ({self.calories} kcal)"
+        return f"Food Name: {self.food_name} \r\nCalories({self.calories} kcal) \r\nfoodID {self.foodID}"
 
 
 

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <main role="main" class="container">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <a class="navbar-brand" href="{{ url_for('create_diet') }}">Diet</a><!-- need to add a link to diet page -->
             <div class="collapse navbar-collapse">
@@ -28,6 +28,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('create_diet') }}">Create Diet</a><!-- need to add a toute to My diets page -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('account') }}">Account</a><!-- need to add a toute to My diets page -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a><!-- need to add a toute to My diets page -->
@@ -57,7 +60,7 @@
         {% block content %}
 
         {% endblock %}
-    </div>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
