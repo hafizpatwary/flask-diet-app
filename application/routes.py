@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, abort
 from application import app, db, bcrypt, login_manager
 from application.models import User, Diet, Food, diet_plan
 from application.forms import DietForm, FoodForm, RegistrationForm, LoginForm, UpdateAccountForm, UpdateDietForm
@@ -87,16 +87,15 @@ def create_diet():
 @login_required
 def diets():
     diets = Diet.query.filter_by(user=current_user).all()
-    foods = Food.query.all()
     # if request.method == "POST":
     #     adding_to_diet = Diet.query.filter_by(dietID=request.form['diet']).first()
     #     food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
     #     adding_to_diet.foods.append(food_to_add)
     #     db.session.commit()
     #     return render_template('diets.html', foods=foods,diets=diets)
-    return render_template('diets.html', foods=foods, food='no food',diets=diets)
+    return render_template('diets.html', diets=diets)
 
-#--------------Delete Diet
+####### Delete Diet #######
 @app.route('/diets/delete/<int:dietID>', methods=['GET','POST'])
 @login_required
 def delete_diet(dietID):
@@ -105,12 +104,15 @@ def delete_diet(dietID):
     db.session.commit()
 
     return redirect(url_for('diets'))
-#--------------Update Diet
+
+####### Update Diet #######
 @app.route('/diets/update/<int:dietID>', methods=['GET','POST'])
 @login_required
 def update_diet(dietID):
     form = UpdateDietForm()
-    diet = Diet.query.filter_by(dietID=dietID).first()
+    diet = Diet.query.get_or_404(dietID)
+    if diet.user != current_user:
+        abort(403)
     if form.validate_on_submit():
         diet.diet_name = form.diet_name.data
         diet.description = form.description.data
@@ -122,6 +124,19 @@ def update_diet(dietID):
         form.description.data = diet.description
 
     return render_template('diet.html',title='Edit Diet', form=form)
+
+####### Add Food #######
+@app.route('/diets/add/<int:dietID>', methods=['GET','POST'])
+@login_required
+def add_food(dietID):
+    foods = Food.query.all()
+    diet = Diet.query.filter_by(dietID=dietID).first()
+    if request.method == "POST":
+        food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
+        diet.foods.append(food_to_add)
+        db.session.commit()
+        flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
+    return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods)
 
 
 #--------------------------------------------Food--------------------------------------------------------

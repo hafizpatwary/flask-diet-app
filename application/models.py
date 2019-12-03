@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     id = userID #for overiding
 
     def __repr__(self):
-        return f"UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}"
+        return f"[UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}]"
 
 
 diet_plan = db.Table('diet_plan',
@@ -38,7 +38,7 @@ class Diet(db.Model):
     foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets'))
 
     def __repr__(self):
-        return f"DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.foods"
+        return f"[DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.foods]"
 
 
 class Food(db.Model):
@@ -50,7 +50,7 @@ class Food(db.Model):
         """ This function is used to REPRESENTED the object, this is particularly useful
         when it has to be deplayed on the webpage. Exaple: in the food list in diet page
         food name and calorie is required hence the format below had been chosen"""
-        return f"Food Name: {self.food_name} \r\nCalories({self.calories} kcal) \r\nfoodID {self.foodID}"
+        return f"[Food Name: {self.food_name} \r\nCalories({self.calories} kcal) \r\nfoodID {self.foodID}]"
 
 
 
