@@ -121,7 +121,7 @@ def update_diet(dietID):
     return render_template('diet.html',title='Edit Diet', form=form)
 
 ####### Add Food to diet #######
-@app.route('/diets/add/<int:dietID>', methods=['GET','POST'])
+@app.route('/diets/add/<int:dietID>', methods=['GET','POST','DELETE'])
 @login_required
 def add_food(dietID):
     foods = Food.query.all()
@@ -131,13 +131,18 @@ def add_food(dietID):
         diet.foods.append(food_to_add)
         db.session.commit()
         flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
-    return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods)
+    return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods, dietID=dietID)
 
 ####### Remove Food from diet #######
-@app.route('/diets/remove/<int:dietID>', methods=['GET','POST'])
+@app.route('/diets/remove/<int:dietID>/<int:foodID>', methods=['GET','POST'])
 @login_required
-def remove_food(dietID):
-    pass
+def remove_food(foodID,dietID):
+    diet = Diet.query.filter_by(dietID=dietID).first()
+    food_to_remove = Food.query.filter_by(foodID=foodID).first()
+    diet.foods.remove(food_to_remove)
+    db.session.commit()
+    flash(f'Removed {food_to_remove.food_name} from {diet.diet_name}', 'info')
+    return redirect(url_for('add_food',dietID=dietID))
 
 
 #--------------------------------------------Food--------------------------------------------------------
