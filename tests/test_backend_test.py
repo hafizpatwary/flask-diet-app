@@ -25,14 +25,22 @@ class TestBase(TestCase):
         db.create_all()
 
         # create test admin user
+<<<<<<< HEAD
         admin = User(name="admin", surname="admin", email="admin@admin.com", password="admin2019")
 
         # create test non-admin user
         trainer = User(name="test", surname="user", email="test@user.com", password="test2019")
+=======
+        admin = User(name="admin", surname="admin", email="admin@admin.com", password="admin2016")
+
+        # create test non-admin user
+        employee = User(name="test", surname="user", email="test@user.com", password="test2016")
+>>>>>>> f0d236eb1432ff353b41dc53fa543e22a0af9154
 
         # save users to database
         db.session.add(admin)
         db.session.add(employee)
+<<<<<<< HEAD
 
         # create test food apple
         apple = Food(food_name='Apple', calories=75)
@@ -55,6 +63,8 @@ class TestBase(TestCase):
         db.session.add(mass_diet)
 
         # commit all changes to database
+=======
+>>>>>>> f0d236eb1432ff353b41dc53fa543e22a0af9154
         db.session.commit()
 
     def tearDown(self):
@@ -65,6 +75,7 @@ class TestBase(TestCase):
         db.drop_all()
 
 
+<<<<<<< HEAD
 class test_models(TestBase):
     def test_diet_model(self):
         """ Create a diet """
@@ -98,3 +109,18 @@ class test_models(TestBase):
 
 
 
+=======
+class test_diet(TestBase):
+    def test_diet_model(self):
+        diet = Diet(diet_name='Vegan', description='No meat, eggs or milk', userID=1)
+
+        db.session.add(diet)
+        db.session.commit()
+
+        self.assertEqual(Diet.query.count(), 1)
+        veganDiet = Diet.query.filter_by(dietID=1).first()
+        self.assertEqual(veganDiet.diet_name, 'Vegan')
+
+    def test_food_model(self):
+        pass
+>>>>>>> f0d236eb1432ff353b41dc53fa543e22a0af9154
