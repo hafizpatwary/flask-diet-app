@@ -65,7 +65,7 @@ class TestBase(TestCase):
         db.drop_all()
 
 
-class test_models(TestBase):
+class TestModels(TestBase):
     def test_diet_model(self):
         """ Create a diet """
 
@@ -93,7 +93,59 @@ class test_models(TestBase):
 
 
     def test_diet_plan(self):
-        """ Create food """
+        """ Testing many to many relationship between food and diet.
+        Adding Apple and Pasta to vegan diet  """
+        apple = Food.query.filter_by(food_name='Apple').first()
+        pasta = Food.query.filter_by(food_name='Pasta').first()
+        
+        mass_diet = Diet.query.filter_by(diet_name='Mass gainer').first()
+        mass_diet.foods = [apple, pasta]
+
+        db.session.commit()
+
+        
+        self.assertEqual(mass_diet.foods[1].food_name, 'Pasta')
+
+class TestRoutes(TestBase):
+
+    def test_home_page(self):
+        """ Testing home page is responsive"""
+
+        response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_login_page(self):
+        """ Testing login page is responsive"""
+
+        response = self.client.get(url_for('login'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_food_page(self):
+        """ Testing food page is responsive"""
+
+        response = self.client.get(url_for('food'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_register_page(self):
+        """ Testing register page is responsive"""
+
+        response = self.client.get(url_for('food'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_dietpage_without_login(self):
+        """ Test diet page is not accessible without login """
+
+        target_url = url_for('diets')
+        redirect_url = url_for('login', next=target_url)
+        response = self.client.get(target_url)
+
+        self.assertEqual(response.status_code, 302)
+
+
+
+
+
+
 
 
 
