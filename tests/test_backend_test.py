@@ -106,6 +106,32 @@ class TestModels(TestBase):
         
         self.assertEqual(mass_diet.foods[1].food_name, 'Pasta')
 
+class TestUpdateDelete(TestBase):
+
+    def test_update_account(self):
+        """ Update Account """
+
+        # user with ID=2 curernt details: 
+        # name= "test", surname="user"
+        trainer = User.query.filter_by(userID=2).first()
+
+        trainer.name = "Ben"
+        trainer.surname = "Crutchley"
+        trainer.email = "ben@qa.com"
+
+        db.session.commit()
+
+        trainer = User.query.filter_by(userID=2).first()
+
+        self.assertNotEqual(trainer.name, "test")
+        self.assertNotEqual(trainer.surname, "user")
+        self.assertEqual(trainer.email, "ben@qa.com")
+
+    def pass():
+        pass
+
+
+
 class TestRoutes(TestBase):
 
     def test_home_page(self):
@@ -141,11 +167,26 @@ class TestRoutes(TestBase):
 
         self.assertEqual(response.status_code, 302)
 
+    def test_creatediet_without_login(self):
+        """ Test login required to create diet """
 
+        target_url = url_for('create_diet')
+        redirect_url = url_for('login', next=target_url)
+        response = self.client.get(target_url)
 
+        self.assertEqual(response.status_code, 302)
 
+    def test_account__without_login(self):
+        """ Test login required to view account """
 
+        target_url = url_for('account')
+        redirect_url = url_for('login', next=target_url)
+        response = self.client.get(target_url)
 
+        self.assertEqual(response.status_code, 302)
+
+class TestLoginFucntionality(TestBase):
+    pass
 
 
 
