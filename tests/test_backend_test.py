@@ -127,10 +127,6 @@ class TestUpdateDelete(TestBase):
         self.assertNotEqual(trainer.surname, "user")
         self.assertEqual(trainer.email, "ben@qa.com")
 
-    def pass():
-        pass
-
-
 
 class TestRoutes(TestBase):
 
