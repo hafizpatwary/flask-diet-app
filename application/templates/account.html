@@ -52,4 +52,7 @@
             {{ form.submit(class="btn btn-info btn-sm") }}
     </form>
 </div>
+
+<a href="/account/delete/{{ user.id }}" class="btn btn-outline-danger btn-sm"
+                    onclick="return confirm('Are you sure you want to delete?')">Delete</a>
 {% endblock %}

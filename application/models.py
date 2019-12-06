@@ -15,12 +15,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(128), nullable=False)
     password = db.Column(db.String(512), nullable=False)
     #the attribute below 'diets' is linked to the Diets table. i.e if User.diets is called all the diets that user created are shown
-    diets = db.relationship('Diet', backref='user') #backref is useful when
+    diets = db.relationship('Diet', cascade="save-update, merge, delete", backref='user') #backref is useful when
 
-    #id = userID #for overiding
 
     def __repr__(self):
-        return f"[UserID: {self.id} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}]"
+        return f"[UserID: {self.id} \r\nName: {self.name} \r\nSurname: {self.surname} \r\nemail: {self.email}]"
 
 
 diet_plan = db.Table('diet_plan',

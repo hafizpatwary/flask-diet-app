@@ -200,4 +200,17 @@ def account():
         form.surname.data = current_user.surname
         form.email.data = current_user.email
 
-    return render_template('account.html',title='Account', form=form)
+    return render_template('account.html',title='Account', form=form, user=current_user)
+
+@app.route('/account/delete/<int:id>', methods=['GET','POST'])
+@login_required
+def delete_account(id):
+    user = User.query.get_or_404(id)
+    if user != current_user:
+        abort(403)
+    logout_user()
+    flash("... your account has been deleted!  :'( ", 'warning')
+    db.session.delete(user)
+    db.session.commit()
+
+    return redirect(url_for('home'))
