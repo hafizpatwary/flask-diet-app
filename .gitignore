@@ -1,6 +1,0 @@
-.gitignore
-.coverage
-venv/
-.DS_Store
-application/__pycache__
-*.pyc
