@@ -66,6 +66,8 @@ class TestBase(TestCase):
 
 
 class TestModels(TestBase):
+    """ To test the tables created """
+
     def test_diet_model(self):
         """ Create a diet """
 
