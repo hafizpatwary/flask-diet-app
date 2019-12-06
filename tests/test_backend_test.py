@@ -49,7 +49,7 @@ class TestBase(TestCase):
 
         # create a 2nd diet for admin
         mass_diet = Diet(diet_name='Mass gainer', description='Protein mainly', user=admin)
-        
+
         # save diets to database
         db.session.add(vegan_diet)
         db.session.add(mass_diet)
@@ -97,13 +97,13 @@ class TestModels(TestBase):
         Adding Apple and Pasta to vegan diet  """
         apple = Food.query.filter_by(food_name='Apple').first()
         pasta = Food.query.filter_by(food_name='Pasta').first()
-        
+
         mass_diet = Diet.query.filter_by(diet_name='Mass gainer').first()
         mass_diet.foods = [apple, pasta]
 
         db.session.commit()
 
-        
+
         self.assertEqual(mass_diet.foods[1].food_name, 'Pasta')
 
 class TestUpdateDelete(TestBase):
@@ -111,7 +111,7 @@ class TestUpdateDelete(TestBase):
     def test_update_account(self):
         """ Update Account """
 
-        # user with ID=2 curernt details: 
+        # user with ID=2 curernt details:
         # name= "test", surname="user"
         trainer = User.query.filter_by(userID=2).first()
 

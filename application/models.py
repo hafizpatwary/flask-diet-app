@@ -9,7 +9,7 @@ def load_user(id):
 ####################################
 
 class User(db.Model, UserMixin):
-    userID = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     surname = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(128), nullable=False)
@@ -17,10 +17,10 @@ class User(db.Model, UserMixin):
     #the attribute below 'diets' is linked to the Diets table. i.e if User.diets is called all the diets that user created are shown
     diets = db.relationship('Diet', backref='user') #backref is useful when
 
-    id = userID #for overiding
+    #id = userID #for overiding
 
     def __repr__(self):
-        return f"[UserID: {self.userID} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}]"
+        return f"[UserID: {self.id} \r\nName: {self.name} \r\nSurname:  {self.surname} \r\nemail: {self.email}]"
 
 
 diet_plan = db.Table('diet_plan',
@@ -33,9 +33,9 @@ class Diet(db.Model):
     dietID = db.Column(db.Integer, primary_key=True)
     diet_name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(512))
-    userID = db.Column(db.Integer, db.ForeignKey('user.userID'))
+    userID = db.Column(db.Integer, db.ForeignKey('user.id'))
     #foods is a way to link Diet to Food thorugh diet_plan
-    foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets'))
+    foods = db.relationship('Food', secondary=diet_plan, backref=db.backref('diets', lazy='dynamic'))
 
     def __repr__(self):
         return f"[DietID: {self.dietID} \r\nDiet: {self.diet_name} \r\nDescription: {self.description} \r\nFoods: self.foods]"

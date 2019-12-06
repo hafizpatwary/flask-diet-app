@@ -27,7 +27,7 @@ def register():
             )
         db.session.add(userData)
         db.session.commit()
-        flash("Account created successfully", 'success')
+        flash("Account created successfully, please Log In", 'success')
         return redirect(url_for('login'))
     else:
         print(form.errors)
@@ -48,7 +48,7 @@ def login():
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
 
-            return redirect(next_page) if next_page else redirect(url_for('diets'))
+            return redirect(next_page) if next_page else redirect(url_for('home'))
 
         flash("Login unsuccessfull. Please check email and password", 'danger')
 
@@ -126,6 +126,8 @@ def update_diet(dietID):
 def add_food(dietID):
     foods = Food.query.all()
     diet = Diet.query.filter_by(dietID=dietID).first()
+    if diet.user != current_user:
+        abort(403)
     if request.method == "POST":
         food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
         diet.foods.append(food_to_add)
@@ -138,6 +140,8 @@ def add_food(dietID):
 @login_required
 def remove_food(foodID,dietID):
     diet = Diet.query.filter_by(dietID=dietID).first()
+    if diet.user != current_user:
+        abort(403)
     food_to_remove = Food.query.filter_by(foodID=foodID).first()
     diet.foods.remove(food_to_remove)
     db.session.commit()
@@ -168,6 +172,7 @@ def food():
     return render_template('food.html',title='Food', form=form, foods=foods)
 
 @app.route('/food/delete/<int:foodID>', methods=['GET','POST'])
+@login_required
 def delete_food(foodID):
 
     food_to_delete = Food.query.filter_by(foodID=foodID).first()
