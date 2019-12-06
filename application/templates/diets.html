@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>My Diets</h3>
+<!---------------------------------------Showing Diets--------------------------------------------------->
+<div class="row m-2">
+{% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
+    <div class="col-sm-4 py-1">
+        <div class="card h-100">
+            <div class="card-body text-left">
+                <h5 class="card-title">{{ diet.diet_name }}</h5>
+                Food:
+                {% for food in diet.foods %}
+                    {% if food == diet.foods[-1] %}
+                        {{ food.food_name }}.
+                    {% else %}
+                        {{ food.food_name }},
+                    {% endif %}
+                {% endfor %}
+                <hr>
+                <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
+
+                <div class="float-right">
+                    <!-- Edit diet -->
+                    <a href="/diets/add/{{ diet.dietID }}" class="btn btn-outline-info btn-sm">Add Food</a>
+                    <!-- Edit diet -->
+                    <a href="/diets/update/{{ diet.dietID }}" class="btn btn-outline-warning btn-sm">Edit</a>
+                    <!-- Delete diet -->
+                    <a href="/diets/delete/{{ diet.dietID }}" class="btn btn-outline-danger btn-sm"
+                    onclick="return confirm('Are you sure you want to delete {{ diet.diet_name }}?')">Delete</a>
+                </div>
+
+                <!-- need make a pop up for card and add button to delete card -->
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">User Login</legend>
+<!--------------------------------- Diet Name ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.email.label }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control",placeholder="Email") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Description ---------------------------------------------------->
+            <div class="form-group">
+                {{ form.password.label }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control",placeholder="Password") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.remember }}
+            	<span class="text-muted ml-2">{{ form.remember.label }}</span>
+            </div>
+        </fieldset>
+<!--------------------------------- Submit --------------------------------------------------------->
+            {{ form.submit(class="btn btn-info btn-sm") }}
+    </form>
+</div>
+
+
+{% endblock %}

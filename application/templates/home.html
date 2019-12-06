@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron mt-2">
+    <h1 class="display=4">Get started with a diet plan</h1>
+    <p class="lead">A diet plan can help you live a healthier life style, keep you in shape or make you gain that little extra mass that you always wanter.</p>
+    <hr class="my-4">
+    <p> Get started by creating your diet today, wether it is a meat free, pescetarian (i.e. fish only) or full vegan diet. Start feeling good about your food consumption</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('create_diet') }}" role="button">Create diet</a>
+</div>
+
+<div class="row m-2">
+{% for diet in diets %} <!-- the range is set up so that the cards appear 3 columns per row -->
+    <div class="col-sm-4 py-2">
+        <div class="card h-100">
+            <div class="card-body text-left">
+                <h5 class="card-title">{{ diet.diet_name }}</h5>
+                Food:
+                {% for food in diet.foods %}
+                    {% if food == diet.foods[-1] %}
+                        {{ food.food_name }}<!--({{ food.calories }})-->.
+                    {% else %}
+                        {{ food.food_name }}<!--({{ food.calories }} kcal)-->,
+                    {% endif %}
+                {% endfor %}
+                <hr>
+                <p class="card-text text-left">{{ diet.description }} this is just a long paragraph to see if everything is working perfectly, QA QA QA AQ AQ AQ</p>
+                <!--<div class="float-right">
+                    <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Food</h3>
+
+<!--------------------------------- Diet Name ---------------------------------------------------->
+<div class="row m-5"> <!-- m-5 to give a margin of 5 in all four directions -->
+
+<!--------------------------------- Food Displayed ----------------------------------------------->
+{% for food in foods %}
+    <div class="col-sm-3 mb-3">
+        <div class="card">
+            <div class="card-body text-left">
+                <h5 class="card-title">{{ food.food_name }}</h5>
+                <p class="card-text text-left">{{ food.calories }} kcal</p>
+                <!------- Delete Button------>
+                <div class="float-right">
+                    <a href="/food/delete/{{ food.foodID }}" class="btn btn-outline-danger btn-sm"
+                    onclick="return confirm('Are you sure you want to delete {{ food.food_name }}?')">Delete</a>
+                </div>
+                <!------- Delete Ends ------>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<!--------------------------------- Food Form to add food ---------------------------------------->
+<div class="content-section ml-4">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+<!--------------------------------- Food Name ---------------------------------------------------->
+            <div class="form-group">
+                {% if form.food_name.errors %}
+                    {{ form.food_name(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.food_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.food_name(class="form-control",placeholder="Food Name") }}
+                {% endif %}
+            </div>
+<!--------------------------------- Food Calories ----------------------------------------------->
+            <div class="form-group">
+                {% if form.calories.errors %}
+                    {{ form.calories(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.calories.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.calories(class="form-control",placeholder="Calories") }}
+                {% endif %}
+            </div>
+            {{ form.submit(class="btn btn-info btn-sm") }}
+            </fieldset>
+    </form>
+</div>
+{% endblock %}
