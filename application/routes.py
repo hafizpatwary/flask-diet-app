@@ -27,7 +27,7 @@ def register():
             )
         db.session.add(userData)
         db.session.commit()
-        flash("Account created successfully, please Log In", 'success')
+        flash("Account created successfully! Please log In", 'success')
         return redirect(url_for('login'))
     else:
         print(form.errors)
