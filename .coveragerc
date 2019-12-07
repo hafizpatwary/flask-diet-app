@@ -1,0 +1,2 @@
+[run]
+omit = application/venv/*, tests/test_back_end.py, tests/__init__.py
