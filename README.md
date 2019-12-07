@@ -8,7 +8,6 @@
    * [Entity Relationship Diagrams](#erd)
 
 [Testing](#testing)
-   * [Report](#report)
 
 
 [Deployment](#depl)
@@ -47,7 +46,7 @@ However, it is likely that different meals will be part of many diets. Hence, th
 ![Final ERD](/Documentation/ERD_Final.png)
 
 
-As shown in the final ERD as well as food and diet tables, a user table was added. After completing the initial ERD tables, it made sense that different food can belong to different diets.
+In the final ERD as well as food and diet tables, a user table was added. After completing the initial ERD tables, it made sense that different food can belong to different diets.
 A user table was also added so that a diet plan can only be modified or deleted by the owner of diet only.
 The agile methodology enabled the addition of this features, i.e. once the minimum viable product was met, I was able improve the functionalties.
 
@@ -55,15 +54,13 @@ The agile methodology enabled the addition of this features, i.e. once the minim
 <a name="testing"></a>
 ## Testing
 
-JUnit, Mockito and Selenium tests have been used for automated testing, and SonarLint/SonarQube for static reporting and refactoring.
+Testing has been done using pytest. The coverage report for the backend is 54%.
+With pytest I was able to test functionality that did not require user login, as most functions in my app
+requires user login, the coverage for testing could have been improved by using another tool called Selenium.
+However due to the time contraint this was not covered.
 
-<a name="report"></a>
-### Report
+[Coverage Image](/Documentation/#)
 
-[Link to Final Surefire Report](/Documentation/Surefire_Report.pdf)
-
-Test coverage for the backend is at 84%, there are as of yet no working Selenium tests but hope to get these running soon.
-The SonarQube static report shows 9 code smells remaining, 0 bugs, 0 duplications and 0 vulnerabilities.
 
 <a name="depl"></a>
 ## Deployment
@@ -94,15 +91,24 @@ Jenkins justification:
 <a name="FE"></a>
 ## Front End Design
 ### Wireframes
-Diets
-![Diet Page](/Documentation/diet.png)
-Foods
-![Food Page](/Documentation/food.png)
+
 ### Final Appearance
+Diets
+![Diet Page](/Documentation/diet_page.png)
+Foods
+![Food Page](/Documentation/food_page.png)
+Add food to diet
+![Add to Diet](/Documentation/addfood.png)
+
 
 <a name="improve"></a>
 ## Improvements for the Future
 
+Add author of diet in the homepage
+Add total calories in diet card
+Add functionality to make diet private or public
+Search functionality as the food will increase
+Mobile frinedly
 <a name="auth"></a>
 ## Authors
 
