@@ -33,6 +33,7 @@ The diets will consist of meals, that the user can create and add to their diet.
 ### Entity Relationship Diagrams
 #### Initial plan
 ![Initial ERD](/Documentation/ERD_Initial_Plan.png)
+<img src="/Documentation/ERD_Initial_Plan.png" alt="Initial ERD" style="width: 200px;"/>
 
 The initial plan for the ERD consisted in meeting the requirements set by the project brief,
  the application should have contained at least two tables with a relationship between them.
@@ -90,14 +91,22 @@ Jenkins justification:
 
 <a name="FE"></a>
 ## Front End Design
-### Wireframes
+
+### Initial Front End Sketch
+
+
 
 ### Final Appearance
-Diets
+####Diets
+
 ![Diet Page](/Documentation/diet_page.png)
-Foods
+
+####Foods
+
 ![Food Page](/Documentation/food_page.png)
-Add food to diet
+
+####Add food to diet
+
 ![Add to Diet](/Documentation/addfood.png)
 
 
