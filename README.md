@@ -92,11 +92,6 @@ Jenkins justification:
 <a name="FE"></a>
 ## Front End Design
 
-### Initial Front End Sketch
-
-
-
-### Final Appearance
 #### Diets page
 
 <img src="/Documentation/diet_page.png" alt="Diet Page" width="80%" height="80%" border="5"/>
