@@ -33,7 +33,7 @@ The diets will consist of meals, that the user can create and add to their diet.
 <a name="erd"></a>
 ### Entity Relationship Diagrams
 #### Initial plan
-![Initial ERD](/Documentation/ERD_Initial_Plan.png {:height="50%" width="50%"})
+![Initial ERD](/Documentation/ERD_Initial_Plan.png)
 
 The initial plan for the ERD consisted in meeting the requirements set by the project brief,
  the application should have contained at least two tables with a relationship between them.
