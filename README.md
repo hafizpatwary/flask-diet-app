@@ -99,16 +99,16 @@ Jenkins justification:
 ### Final Appearance
 #### Diets page
 
-<img src="/Documentation/diet_page.png" alt="Diet Page" width="70%" height="70%"/>
+<img src="/Documentation/diet_page.png" alt="Diet Page" width="80%" height="80%" border="5"/>
 
 #### Add food to diet
 
-<img src="/Documentation/addfood.png" alt="Add food to Diet" width="70%" height="70%"/>
+<img src="/Documentation/addfood.png" alt="Add food to Diet" width="80%" height="80%" border="5"/>
 
 
 #### Foods page
 
-<img src="/Documentation/food_page.png" alt="Food Page" width="70%" height="70%"/>
+<img src="/Documentation/food_page.png" alt="Food Page" width="80%" height="80%" border="5"/>
 
 
 <a name="improve"></a>
