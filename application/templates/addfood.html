@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h1>Add or Remove food to diet</h1>
+<h1>Add or Remove food to {{ diet.diet_name }}</h1>
 <div class="col-lg-12 col-md-12 col-sm-12 ">
     <form method="POST">
     <!---------------------------------------Select Food--------------------------------------------------->
@@ -29,7 +29,7 @@
           <td>{{ food.calories }}</td>
           <td>
             <form method="DELETE">
-              <a href="/diets/remove/{{ dietID }}/{{ food.foodID }}" class="btn btn-outline-danger btn-sm">Remove</a></td>
+              <a href="/diets/remove/{{ diet.dietID }}/{{ food.foodID }}" class="btn btn-outline-danger btn-sm">Remove</a></td>
             </form>
           </td>
         </tr>
