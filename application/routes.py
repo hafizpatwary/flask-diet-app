@@ -128,8 +128,8 @@ def add_food(dietID):
     diet = Diet.query.filter_by(dietID=dietID).first()
 
     total_cal = 0
-        for food in diet.foods:
-            total_cal += food.calories
+    for food in diet.foods:
+        total_cal += food.calories
 
     if diet.user != current_user:
         abort(403)
