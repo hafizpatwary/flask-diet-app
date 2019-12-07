@@ -32,7 +32,7 @@ The diets will consist of meals, that the user can create and add to their diet.
 <a name="erd"></a>
 ### Entity Relationship Diagrams
 #### Initial plan
-![Initial ERD](/Documentation/ERD_Initial_Plan.png)
+
 <img src="/Documentation/ERD_Initial_Plan.png" alt="Initial ERD" width="60%" height="60%"/>
 
 The initial plan for the ERD consisted in meeting the requirements set by the project brief,
