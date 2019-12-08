@@ -141,8 +141,8 @@ requires user login, the coverage for testing could have been improved by using 
 
 <img src="/Documentation/test_results.png" alt="Diet Page" width="100%" height="100%" border="5"/>
 
-With pytest I was able to test functionality that did not require user login, as most functions in my app
-requires user login, the coverage for testing could have been improved by using another tool called Selenium.
+With pytest I was able to test **functionality that did not require user login**, as most functions in my app
+requires user login, the coverage for **testing could have been improved** by **using the Selenium** tool.
 However due to the time contraint this was not covered.
 
 <img src="/Documentation/test_login.png" alt="Diet Page" width="80%" height="80%" border="5"/>
