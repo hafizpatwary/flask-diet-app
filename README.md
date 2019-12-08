@@ -39,7 +39,7 @@ To create a CRUD application with utilisation of supporting tools, methodologies
 My project focuses around health and lifestyle. The web appliation I created allow the user to vist the website and create diets that can be shared with the app's community.
 The diets will consist of meals, that the user can create and add to their diet.
 
-[Project planning](https://trello.com/b/Edpyk0uq/solo-project-qa)
+<a href="https://trello.com/b/Edpyk0uq/solo-project-qa" target="_blank">Project planning</a>
 
 <a name="architecture"></a>
 ## Architecture
