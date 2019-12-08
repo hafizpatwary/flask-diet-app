@@ -100,7 +100,7 @@ Solution:
 * Plan the blue print of the application
 
 <a name="jenkins"></a>
-### Jenkins server being hacked
+#### Jenkins server being hacked
 Currenlty Jenkins server can be accessed anywhere by username and password:
 * If someone other than the product owner knows the credentials, they can access deplyment server
  and get sensitive data such the environment variables for the database
@@ -110,14 +110,14 @@ Solution:
 * Change password often
 
 <a name="database"></a>
-### Database's IP address, username and password up in GitHub
+#### Database's IP address, username and password up in GitHub
 During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake
 Solution:
 * Set enviornmental variables so that crednetials can be accesed by one person only
 * Delete credentials if you know someone else might use the same machine
 
 <a name="auto"></a>
-### Automation causing issues
+#### Automation causing issues
 Automation can save a lot of time and hussle if done right, however if not done properly it can:
 * Slow down development time, if the script witten is full of bug. e.g. Jenkins script not cloning down the correct repo, might take time to debug the problem
 Solution:
@@ -125,7 +125,7 @@ Solution:
 * Do not automate a task that is not repetitive, such as setting environmental variables
 
 <a name="gcp"></a>
-### Running out of GCP credit
+#### Running out of GCP credit
 It is unlikely that I will run out of GCP credit for this project, however it is still a possibility if:
 * Leaving multiple instance up and running
 * Leaving multiple database open can eat credit very quickly
