@@ -183,8 +183,8 @@ Jenkins justification:
 
 As development went by, the source code for routes, kept getting larger:
 * Subdivide routes in their own catergory:
-+ e.g. Registration, Login and account can have their own file
-+ Diet, food and homepage can be in the same file
+  - e.g. Registration, Login and account can have their own file
+  - Diet, food and homepage can be in the same file
 
 
 Bear in mind that GCP only allows one static IP address **per region**. A problem encountered during development
@@ -193,11 +193,11 @@ lot of time lost figuring the issue. **Get different static IP address to save i
 
 
 * Functionalities:
-+ Add author name to the diet
-+ Add total calories in diet card
-+ Add functionality to make diet private or public
-+ Search functionality as the food will increase
-+ Most webiste are accessed my mobile devices, make the app mobile friendly
+  - Add author name to the diet
+  - Add total calories in diet card
+  - Add functionality to make diet private or public
+  - Search functionality as the food will increase
+  + Most webiste are accessed my mobile devices, make the app mobile friendly
 
 <a name="auth"></a>
 ## Authors
