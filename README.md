@@ -91,7 +91,7 @@ An overview of the use case:
 
 <a name="risks_expl" ></a>
 <a name="plan"></a>
-### Lack of clear planning
+#### Lack of clear planning
 Building of web app can get complex down the line as the code source get larger, hence:
 * Not having a clear blue print to manage the code can make debugging difficult
 * Not prioritising the functionality to build for the website means slower delivery
