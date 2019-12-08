@@ -7,11 +7,16 @@
 [Architecture](#architecture)
    * [Entity Relationship Diagrams](#erd)
 
+[Risk Assessment](#risks)
+   * [Risk Sssessment Table](#risks)
+   * [Explanations](#risks_expl)
+
 [Testing](#testing)
 
 
 [Deployment](#depl)
    * [Technologies Used](#tech)
+
 
 [Front End Design](#FE)
 
@@ -51,6 +56,63 @@ In the final ERD as well as food and diet tables, a user table was added. After 
 A user table was also added so that a diet plan can only be modified or deleted by the owner of diet only.
 The agile methodology enabled the addition of this features, i.e. once the minimum viable product was met, I was able improve the functionalties.
 
+<a name="risks" ></a>
+## Risk Assessment
+
+| Risks                            | Likelihood    | Impact       |    Explanation          |
+| -------------------------------- |:-------------:| :-----------:| -----------------------:|
+| Lack of clear planning           | Low           | High         | [1 Click here](#plan)
+|  Jenkins server being hacked     | Medium        |   Medium     | [2 Click here](#auto)
+| Automation causing issues        | Medium        |  High        | [3 Click here](#jenkins)
+| Database's IP address, username and password up in GitHub  | High     |    High | [4 Click here](#database)
+| Running out of GCP credit        |  Very Low     |    Low       | [5 Click here](#gcp)
+
+<a name="risks_expl" ></a>
+<a name="plan"></a>
+##### Lack of clear planning
+Building of web app can get complex down the line as the code source get larger, hence:
+* Not having a clear blue print to manage the code can make debugging difficult
+* Not prioritising the functionality to build for the website means slower delivery
+
+Solution:
+* Set deadline and checklist of work
+* Plan the blue print of the application
+
+<a name="jenkins"></a>
+##### Jenkins server being hacked
+Currenlty Jenkins server can be accessed anywhere by username and password:
+* If someone other than the product owner knows the credentials, they can access deplyment server
+ and get sensitive data such the environment variables for the database
+
+Solution:
+* Make a strong password for Jenkins account
+* Possibly allow access from certain IP address only
+* Change password often
+
+<a name="auto"></a>
+##### Automation causing issues
+Automation can save a lot of time and hussle if done right, however if not done properly it can:
+* For this project automation can mean that
+
+
+<a name="database"></a>
+##### Database's IP address, username and password up in GitHub
+During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake:
+
+Solution:
+* Set enviornmental variables so that crednetials can be accesed by one person only
+* Delete credentials if you know someone else might use the same machine
+
+<a name="gcp"></a>
+##### Running out of GCP credit
+It is unlikely that I will run out of GCP credit for this project, however it is still a possibility if:
+* Leaving multiple instance up and running
+* Leaving multiple database open can eat credit very quickly
+
+Solution:
+* Stop or delte instances that are not required
+* Do not leave autoscaling on any instance, as this might drain GCP credit very quickly if there is an increase in traffict to the website
+
 
 <a name="testing"></a>
 ## Testing
@@ -88,6 +150,7 @@ Jenkins justification:
 * VCS: [Git](https://github.com/devops-cohort/hafiz)
 * Project Tracking: [Trello](https://trello.com/qasoloproject)
 * Live Environment: GCP
+
 
 <a name="FE"></a>
 ## Front End Design
