@@ -66,8 +66,13 @@ A user table was also added so that a diet plan can only be modified or deleted 
 The agile methodology enabled the addition of this features, i.e. once the minimum viable product was met, I was able improve the functionalties.
 
 <a name="user_sotry"></a>
+## Project planning and user stories
+For the prject tracking a tool called Trello has been used. Trello is a free and easy to use platform, that allow to create Kanban boards.
+For this project a kanban board was created, to build featues using user stories.
 
-The user stories and descritptions can be found on Trello borad [here](https://trello.com/b/Edpyk0uq/solo-project-qa)
+<img src="/Documentation/trello.png" alt="Use case" width="80%" height="80%" border="5"/>
+
+Detatiled history of how user stories were implemented can be found on Trello borad [here](https://trello.com/b/Edpyk0uq/solo-project-qa)
 
 An overview of the use case:
 <img src="/Documentation/usecase.png" alt="Use case" width="80%" height="80%" border="5"/>
@@ -90,7 +95,6 @@ An overview of the use case:
 Building of web app can get complex down the line as the code source get larger, hence:
 * Not having a clear blue print to manage the code can make debugging difficult
 * Not prioritising the functionality to build for the website means slower delivery
-
 Solution:
 * Set deadline and checklist of work
 * Plan the blue print of the application
@@ -100,7 +104,6 @@ Solution:
 Currenlty Jenkins server can be accessed anywhere by username and password:
 * If someone other than the product owner knows the credentials, they can access deplyment server
  and get sensitive data such the environment variables for the database
-
 Solution:
 * Make a strong password for Jenkins account
 * Possibly allow access from certain IP address only
@@ -108,8 +111,7 @@ Solution:
 
 <a name="database"></a>
 ### Database's IP address, username and password up in GitHub
-During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake:
-
+During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake
 Solution:
 * Set enviornmental variables so that crednetials can be accesed by one person only
 * Delete credentials if you know someone else might use the same machine
@@ -118,18 +120,15 @@ Solution:
 ### Automation causing issues
 Automation can save a lot of time and hussle if done right, however if not done properly it can:
 * Slow down development time, if the script witten is full of bug. e.g. Jenkins script not cloning down the correct repo, might take time to debug the problem
-
 Solution:
 * Automate only repetitive tasks such as deployment
 * Do not automate a task that is not repetitive, such as setting environmental variables
-
 
 <a name="gcp"></a>
 ### Running out of GCP credit
 It is unlikely that I will run out of GCP credit for this project, however it is still a possibility if:
 * Leaving multiple instance up and running
 * Leaving multiple database open can eat credit very quickly
-
 Solution:
 * Stop or delte instances that are not required
 * Do not leave autoscaling on any instance, as this might drain GCP credit very quickly if there is an increase in traffict to the website
@@ -139,8 +138,14 @@ Solution:
 Testing has been done using pytest. The coverage report for the backend is 54%.
 With pytest I was able to test functionality that did not require user login, as most functions in my app
 requires user login, the coverage for testing could have been improved by using another tool called Selenium.
+
+<img src="/Documentation/test_results.png" alt="Diet Page" width="80%" height="80%" border="5"/>
+
+With pytest I was able to test functionality that did not require user login, as most functions in my app
+requires user login, the coverage for testing could have been improved by using another tool called Selenium.
 However due to the time contraint this was not covered.
 
+<img src="/Documentation/test_login.png" alt="Diet Page" width="80%" height="80%" border="5"/>
 
 
 <a name="depl"></a>
