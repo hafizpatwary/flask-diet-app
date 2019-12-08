@@ -5,6 +5,7 @@ from flask_testing import TestCase
 import os
 from application import app, db
 from application.models import User, Diet, Food
+from flask_login import login_user, current_user
 
 
 class TestBase(TestCase):
@@ -115,7 +116,7 @@ class TestUpdateDelete(TestBase):
 
         # user with ID=2 curernt details:
         # name= "test", surname="user"
-        trainer = User.query.filter_by(userID=2).first()
+        trainer = User.query.filter_by(id=2).first()
 
         trainer.name = "Ben"
         trainer.surname = "Crutchley"
@@ -123,7 +124,7 @@ class TestUpdateDelete(TestBase):
 
         db.session.commit()
 
-        trainer = User.query.filter_by(userID=2).first()
+        trainer = User.query.filter_by(id=2).first()
 
         self.assertNotEqual(trainer.name, "test")
         self.assertNotEqual(trainer.surname, "user")
@@ -184,7 +185,15 @@ class TestRoutes(TestBase):
         self.assertEqual(response.status_code, 302)
 
 class TestLoginFucntionality(TestBase):
-    pass
+
+    def test_login(self):
+        """ Test if login page functional """
+        response = self.client.post( url_for('login'), data=dict(email="admin@admin.com", password="admin2019"),
+            follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+
+
 
 
 

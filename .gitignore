@@ -4,3 +4,12 @@ venv/
 application/__pycache__
 tests/__pycache__
 *.pyc
+/.coverage
+/ignore/*
+/application/__init__.pyc
+/htmlcov/
+/__pycache__/
+/.pytest_cache/
+/venv/
+/application/venv/*
+**/*.pyc

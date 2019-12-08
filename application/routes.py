@@ -138,7 +138,7 @@ def add_food(dietID):
         diet.foods.append(food_to_add)
         db.session.commit()
         flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
-    return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods, dietID=dietID, total_cal=total_cal)
+    return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods, diet=diet, total_cal=total_cal)
 
 ####### Remove Food from diet #######
 @app.route('/diets/remove/<int:dietID>/<int:foodID>', methods=['GET','POST'])
@@ -219,3 +219,8 @@ def delete_account(id):
     db.session.commit()
 
     return redirect(url_for('home'))
+
+
+@app.route('/coverage')
+def coverage():
+    return render_template('index.html')
