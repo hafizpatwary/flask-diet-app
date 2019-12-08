@@ -131,8 +131,7 @@ Solution:
 The user stories and descritptions can be found on Trello borad [here](https://trello.com/b/Edpyk0uq/solo-project-qa)
 
 An overview of the use case:
-![Use case]()
-
+<img src="/Documentation/usecase.png" alt="Use case" width="80%" height="80%" border="5"/>
 
 <a name="testing"></a>
 ## Testing
@@ -142,7 +141,6 @@ With pytest I was able to test functionality that did not require user login, as
 requires user login, the coverage for testing could have been improved by using another tool called Selenium.
 However due to the time contraint this was not covered.
 
-<img src="/Documentation/usecase.png" alt="Use case" width="80%" height="80%" border="5"/>
 
 
 <a name="depl"></a>
