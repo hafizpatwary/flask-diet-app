@@ -74,7 +74,7 @@ The agile methodology enabled the addition of this features, i.e. once the minim
 
 <a name="risks_expl" ></a>
 <a name="plan"></a>
-##### Lack of clear planning
+### Lack of clear planning
 Building of web app can get complex down the line as the code source get larger, hence:
 * Not having a clear blue print to manage the code can make debugging difficult
 * Not prioritising the functionality to build for the website means slower delivery
@@ -84,7 +84,7 @@ Solution:
 * Plan the blue print of the application
 
 <a name="jenkins"></a>
-##### Jenkins server being hacked
+### Jenkins server being hacked
 Currenlty Jenkins server can be accessed anywhere by username and password:
 * If someone other than the product owner knows the credentials, they can access deplyment server
  and get sensitive data such the environment variables for the database
@@ -95,7 +95,7 @@ Solution:
 * Change password often
 
 <a name="database"></a>
-##### Database's IP address, username and password up in GitHub
+### Database's IP address, username and password up in GitHub
 During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake:
 
 Solution:
@@ -103,7 +103,7 @@ Solution:
 * Delete credentials if you know someone else might use the same machine
 
 <a name="auto"></a>
-##### Automation causing issues
+### Automation causing issues
 Automation can save a lot of time and hussle if done right, however if not done properly it can:
 * Slow down development time, if the script witten is full of bug. e.g. Jenkins script not cloning down the correct repo, might take time to debug the problem
 
@@ -113,7 +113,7 @@ Solution:
 
 
 <a name="gcp"></a>
-##### Running out of GCP credit
+### Running out of GCP credit
 It is unlikely that I will run out of GCP credit for this project, however it is still a possibility if:
 * Leaving multiple instance up and running
 * Leaving multiple database open can eat credit very quickly
@@ -183,21 +183,21 @@ Jenkins justification:
 
 As development went by, the source code for routes, kept getting larger:
 * Subdivide routes in their own catergory:
--- e.g. Registration, Login and account can have their own file
--- Diet, food and homepage can be in the same file
++ e.g. Registration, Login and account can have their own file
++ Diet, food and homepage can be in the same file
 
 
-Bear in mind that GCP only allows one static IP address ** per region **. A problem encountered during development
+Bear in mind that GCP only allows one static IP address **per region**. A problem encountered during development
 was that getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a
-lot of time lost figuring the issue. ** Get different static IP address to save internal server errors **
+lot of time lost figuring the issue. **Get different static IP address to save internal server errors**
 
 
 * Functionalities:
--- Add author name to the diet
--- Add total calories in diet card
--- Add functionality to make diet private or public
--- Search functionality as the food will increase
--- Most webiste are accessed my mobile devices, make the app mobile friendly
++ Add author name to the diet
++ Add total calories in diet card
++ Add functionality to make diet private or public
++ Search functionality as the food will increase
++ Most webiste are accessed my mobile devices, make the app mobile friendly
 
 <a name="auth"></a>
 ## Authors
