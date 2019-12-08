@@ -70,7 +70,7 @@ The agile methodology enabled the addition of this features, i.e. once the minim
 For the prject tracking a tool called Trello has been used. Trello is a free and easy to use platform, that allow to create Kanban boards.
 For this project a kanban board was created, to build featues using user stories.
 
-<img src="/Documentation/trello.png" alt="Use case" width="80%" height="80%" border="5"/>
+<img src="/Documentation/trello.png" alt="Use case" width="100%" height="100%" border="5"/>
 
 Detatiled history of how user stories were implemented can be found on Trello borad [here](https://trello.com/b/Edpyk0uq/solo-project-qa)
 
@@ -139,7 +139,7 @@ Testing has been done using pytest. The coverage report for the backend is 54%.
 With pytest I was able to test functionality that did not require user login, as most functions in my app
 requires user login, the coverage for testing could have been improved by using another tool called Selenium.
 
-<img src="/Documentation/test_results.png" alt="Diet Page" width="80%" height="80%" border="5"/>
+<img src="/Documentation/test_results.png" alt="Diet Page" width="100%" height="100%" border="5"/>
 
 With pytest I was able to test functionality that did not require user login, as most functions in my app
 requires user login, the coverage for testing could have been improved by using another tool called Selenium.
