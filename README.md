@@ -198,21 +198,19 @@ As development went by, the source code for routes, kept getting larger:
 -- Diet, food and homepage can be in the same file
 
 
-Bear in mind that GCP only allows one static IP address ** per region **. A problem encountered during development
-was that getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a
-lot of time lost figuring the issue. ** Get different static IP address to save internal server errors **
+* Bear in mind that GCP only allows one static IP address **per region**. A problem encountered during development was that getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a lot of time lost figuring the issue. **Get different static IP address to save internal server errors.**
 
 
 * Functionalities:
--- Add author name to the diet
--- Add total calories in diet card
--- Add functionality to make diet private or public
--- Search functionality as the food will increase
--- Most webiste are accessed my mobile devices, make the app mobile friendly
+  * Add author name to the diet
+  * Add total calories in diet card
+  * Add functionality to make diet private or public
+  * Search functionality as the food will increase
+  * Most webiste are accessed my mobile devices, make the app mobile friendly
 
 * ERD:
--- As the number of food get larger, I would implement each user to have their own food
--- A one to many relationship for users and food
+  * As the number of food get larger, I would implement each user to have their own food
+  * A one to many relationship for users and food
 
 <a name="auth"></a>
 ## Authors
