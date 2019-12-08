@@ -37,7 +37,10 @@ pipeline{
 					cd ${install_dir}
 					python3 -m venv venv
 					. venv/bin/activate
-					pip3 install -r requirements.txt'''
+					pip3 install -r requirements.txt
+					pytest --cov=application . --cov-report=html
+					rm ./application/templates/index.html
+					mv ./htmlcov/index.html ./application/templates/index.html'''
 			}
 		}
 		stage('--Flask-App started--'){
