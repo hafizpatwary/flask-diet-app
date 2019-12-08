@@ -11,6 +11,9 @@
    * [Risk Sssessment Table](#risks)
    * [Explanations](#risks_expl)
 
+[User sotry](#user_sotry)
+   * [Use case diagram](#use_case)
+
 [Testing](#testing)
 
 
@@ -31,6 +34,8 @@ To create a CRUD application with utilisation of supporting tools, methodologies
 ### Solution
 My project focuses around health and lifestyle. The web appliation I created allow the user to vist the website and create a customizable diet that they want to follow.
 The diets will consist of meals, that the user can create and add to their diet.
+
+[Project planning](https://trello.com/b/Edpyk0uq/solo-project-qa)
 
 <a name="architecture"></a>
 ## Architecture
@@ -89,12 +94,6 @@ Solution:
 * Possibly allow access from certain IP address only
 * Change password often
 
-<a name="auto"></a>
-##### Automation causing issues
-Automation can save a lot of time and hussle if done right, however if not done properly it can:
-* For this project automation can mean that
-
-
 <a name="database"></a>
 ##### Database's IP address, username and password up in GitHub
 During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake:
@@ -102,6 +101,16 @@ During development it is likely that I will be working on different machines, he
 Solution:
 * Set enviornmental variables so that crednetials can be accesed by one person only
 * Delete credentials if you know someone else might use the same machine
+
+<a name="auto"></a>
+##### Automation causing issues
+Automation can save a lot of time and hussle if done right, however if not done properly it can:
+* Slow down development time, if the script witten is full of bug. e.g. Jenkins script not cloning down the correct repo, might take time to debug the problem
+
+Solution:
+* Automate only repetitive tasks such as deployment
+* Do not automate a task that is not repetitive, such as setting environmental variables
+
 
 <a name="gcp"></a>
 ##### Running out of GCP credit
@@ -148,7 +157,7 @@ Jenkins justification:
 * CI Server: Jenkins
 * Test Reporting: Pytest
 * VCS: [Git](https://github.com/devops-cohort/hafiz)
-* Project Tracking: [Trello](https://trello.com/qasoloproject)
+* Project Tracking: [Trello](https://trello.com/b/Edpyk0uq/solo-project-qa)
 * Live Environment: GCP
 
 
@@ -172,11 +181,24 @@ Jenkins justification:
 <a name="improve"></a>
 ## Improvements for the Future
 
-Add author of diet in the homepage
-Add total calories in diet card
-Add functionality to make diet private or public
-Search functionality as the food will increase
-Mobile frinedly
+As development went by, the source code for routes, kept getting larger:
+* Subdivide routes in their own catergory:
+-- e.g. Registration, Login and account can have their own file
+-- Diet, food and homepage can be in the same file
+
+
+Bear in mind that GCP only allows one static IP address ** per region **. A problem encountered during development
+was that getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a
+lot of time lost figuring the issue. ** Get different static IP address to save internal server errors **
+
+
+* Functionalities:
+-- Add author name to the diet
+-- Add total calories in diet card
+-- Add functionality to make diet private or public
+-- Search functionality as the food will increase
+-- Most webiste are accessed my mobile devices, make the app mobile friendly
+
 <a name="auth"></a>
 ## Authors
 

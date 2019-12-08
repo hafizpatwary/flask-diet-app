@@ -219,3 +219,8 @@ def delete_account(id):
     db.session.commit()
 
     return redirect(url_for('home'))
+
+
+@app.route('/coverage')
+def coverage():
+    return render_template('index.html')
