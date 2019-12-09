@@ -1,9 +1,18 @@
 # Diet App
 
 Website address: http://35.239.174.237:8001
+
 Test coverage:   http://35.239.174.237:8001/coverage
+
 Jenkins server:  http://34.76.132.65:8080
+
 Presentations:   https://docs.google.com/presentation/d/1dxu-wNn20tZVPTJbh8eNdPEUXCw7bb71MUcYty7vHPQ/edit#slide=id.p
+
+
+
+
+
+
 
 
 
