@@ -1,10 +1,10 @@
 # Diet App
 
-Website address: http://35.239.174.237:8001
+Website address: http://35.239.174.237:8001  (Currently offline)
 
-Test coverage:   http://35.239.174.237:8001/coverage
+Test coverage:   http://35.239.174.237:8001/coverage  (Currenlty offline)
 
-Jenkins server:  http://34.76.132.65:8080
+Jenkins server:  http://34.76.132.65:8080  (Currently offline)
 
 Presentations:   https://docs.google.com/presentation/d/1dxu-wNn20tZVPTJbh8eNdPEUXCw7bb71MUcYty7vHPQ/edit#slide=id.p
 
@@ -70,24 +70,24 @@ The diets will consist of meals, that the user can create and add to their diet.
 
 The initial plan for the ERD consisted in meeting the requirements set by the project brief,
  the application should have contained at least two tables with a relationship between them.
-  As shown above the diet table has a one to many relationship with food table,
+  As shown above the diet table has a one to many relationship with food table;
   meaning that diets can have multiple foods but not the other way round.
 
 
-However, it is likely that different meals will be part of many diets. Hence, the delivered solution includes of a secondary table that facilitate a many to many realtionship between food and diet.
+However, it is likely that different meals will be part of many diets. Hence, the delivered solution includes a secondary table that facilitate a many to many realtionship between food and diet.
 
 #### Delivered solution
 ![Final ERD](/Documentation/ERD_Final.png)
 
 
-In the final ERD as well as food and diet tables, a user table was added. After completing the initial ERD tables, it made sense that different food can belong to different diets.
-A user table was also added so that a diet plan can only be modified or deleted by the owner of diet only.
-The agile methodology enabled the addition of this features, i.e. once the minimum viable product was met, I was able improve the functionalties.
+In the final ERD as well as food and diet tables, a user table has been added. After completing the initial ERD tables, it made sense that different food can belong to different diets.
+The user table was added so that a diet plan can only be modified or deleted by the owner of diet only.
+The agile methodology enabled the addition of this features, i.e. once the minimum viable product was met (two relational tables), I was able improve the functionalties.
 
 <a name="user_sotry"></a>
 ## Project planning and user stories
 For the prject tracking a tool called Trello has been used. Trello is a free and easy to use platform, that allow to create Kanban boards.
-For this project a kanban board was created, to build featues using user stories.
+For this project a kanban board was created, to keep track features as well as user stories.
 
 <img src="/Documentation/trello.png" alt="Use case" width="100%" height="100%" border="5"/>
 
@@ -121,7 +121,7 @@ Solution:
 <a name="jenkins"></a>
 #### Jenkins server being hacked
 Currenlty Jenkins server can be accessed anywhere by username and password:
-* If someone other than the product owner knows the credentials, they can access deplyment server
+* If someone other than the product owner knows the credentials, they can access the deployment server
  and get sensitive data such the environment variables for the database
 Solution:
 * Make a strong password for Jenkins account
@@ -130,7 +130,7 @@ Solution:
 
 <a name="database"></a>
 #### Database's IP address, username and password up in GitHub
-During development it is likely that I will be working on different machines, hence there will be a public Git repo, it is very likely that I upload some credentils by mistake
+During development it is likely that I will be working on different machines, hence there will be a public Git repo. Hence, it is very likely that I may upload some credentils by mistake
 Solution:
 * Set enviornmental variables so that crednetials can be accesed by one person only
 * Delete credentials if you know someone else might use the same machine
@@ -156,7 +156,7 @@ Solution:
 
 Testing has been done using pytest. The coverage report for the backend is 54%.
 With pytest I was able to test functionality that did not require user login, as most functions in my app
-requires user login, the coverage for testing could have been improved by using another tool called Selenium.
+requires user login. The coverage for testing could have been improved by using another tool called Selenium.
 
 <img src="/Documentation/test_results.png" alt="Diet Page" width="100%" height="100%" border="5"/>
 
@@ -165,7 +165,7 @@ requires user login, the coverage for **testing could have been improved** by **
 However due to the time contraint this was not covered.
 
 <img src="/Documentation/test_login.png" alt="Diet Page" width="80%" height="80%" border="5"/>
-
+Code snippets higlited in red were not covered as they require a user to be logged in. Almost 70% of the application required user to be authenticated.
 
 <a name="depl"></a>
 ## Deployment
@@ -220,7 +220,7 @@ As development went by, the source code for routes, kept getting larger:
 -- Diet, food and homepage can be in the same file
 
 
-* Bear in mind that GCP only allows one static IP address **per region**. A problem encountered during development was that getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a lot of time lost figuring the issue. **Get different static IP address to save internal server errors.**
+* Bear in mind that GCP only allows one static IP address **per region**. A problem encountered during development was getting internal server error. This was because SQL network was set to a ephermal IP address. This meant a lot of time lost figuring the issue. **Get different static IP address to save internal server errors.**
 
 
 * Functionalities:
@@ -235,9 +235,11 @@ As development went by, the source code for routes, kept getting larger:
   * A one to many relationship for users and food
 
 <a name="auth"></a>
-## Authors
+## Author
 
 Hafiz Patwary
+
+
 
 
 
