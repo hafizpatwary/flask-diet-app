@@ -126,18 +126,22 @@ def update_diet(dietID):
 def add_food(dietID):
     foods = Food.query.all()
     diet = Diet.query.filter_by(dietID=dietID).first()
-
+    current_food = [food.foodID for food in diet.foods]
     total_cal = 0
     for food in diet.foods:
         total_cal += food.calories
 
     if diet.user != current_user:
         abort(403)
+
     if request.method == "POST":
         food_to_add = Food.query.filter_by(foodID=request.form['foods']).first()
-        diet.foods.append(food_to_add)
-        db.session.commit()
-        flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
+        if int(request.form['foods']) not in current_food:
+            diet.foods.append(food_to_add)
+            db.session.commit()
+            flash(f'Added {food_to_add.food_name} to {diet.diet_name}', 'info')
+        else:
+            flash(f'{food_to_add.food_name} already in {diet.diet_name}', 'info')
     return render_template('addfood.html', title='Edit Diet', foods=foods, user_food=diet.foods, diet=diet, total_cal=total_cal)
 
 ####### Remove Food from diet #######
